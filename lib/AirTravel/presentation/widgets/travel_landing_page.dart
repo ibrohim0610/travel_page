@@ -1,55 +1,125 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:new_project/utils/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class TravelLandingPage extends StatelessWidget {
-  TravelLandingPage({super.key, required this.qonish, required this.uchish});
+class PackageImageItem extends StatelessWidget {
+  const PackageImageItem({
+    super.key,
+    required this.image,
+    required this.common_day,
+    required this.flight_text,
+    required this.landing_text,
+  });
 
-  String uchish, qonish;
+  final String image, common_day, flight_text, landing_text;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        SvgPicture.asset("asset/icons/flight.svg"),
-        SizedBox(
-          width: 10,
-        ),
-        Container(
-          width: 61,
-          height: 21,
-          decoration: BoxDecoration(
-              color: AppColors.TextGreen,
-              borderRadius: BorderRadius.circular(6)),
-          child: Padding(
-            padding: const EdgeInsets.all(1.0),
-            child: Text(
-              uchish,
-              style: TextStyle(color: Colors.white, fontSize: 11),
-            ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Stack(
+            children: [
+              Image(
+                image: AssetImage(
+                  image,
+                ),
+                fit: BoxFit.fill,
+                width: 361,
+                height: 200,
+              ),
+              Positioned(
+                right: 21,
+                top: 21,
+                child: Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: Colors.greenAccent,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  alignment: Alignment.center,
+                  child: SvgPicture.asset("asset/icons/heart.svg"),
+                ),
+              ),
+              Positioned(
+                left: 17,
+                top: 23,
+                child: Container(
+                  // padding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                  width: 59,
+                  height: 21,
+                  decoration: BoxDecoration(
+                    color: Colors.greenAccent,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Center(
+                    child: Text(
+                      flight_text,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 30,
+                right: 30,
+                bottom: 16,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset("asset/icons/flight.svg"),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 4,
+                        // vertical: 1,
+                      ),
+                      width: 80,
+                      height: 21,
+                      decoration: BoxDecoration(
+                        color: Colors.greenAccent,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        flight_text,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    SvgPicture.asset("asset/icons/landing.svg"),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 4,
+                        // vertical: 1,
+                      ),
+                      width: 80,
+                      height: 21,
+                      decoration: BoxDecoration(
+                        color: Colors.greenAccent,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        landing_text,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-        SizedBox(
-          width: 10,
-        ),
-        SvgPicture.asset("asset/icons/landing.svg"),
-        SizedBox(
-          width: 10,
-        ),
-        Container(
-          width: 61,
-          height: 21,
-          decoration: BoxDecoration(
-              color: AppColors.TextGreen,
-              borderRadius: BorderRadius.circular(6)),
-          child: Padding(
-            padding: const EdgeInsets.all(1.0),
-            child: Text(
-              qonish,
-              style: TextStyle(color: Colors.white, fontSize: 11),
-            ),
-          ),
-        )
       ],
     );
   }

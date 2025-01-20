@@ -1,70 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_project/utils/constants.dart';
 
-class TravelItemBeen extends StatelessWidget {
-  const TravelItemBeen({
-    super.key,
-    required this.kun,
-    required this.joy,
-  });
+class TravelDayItem_widget extends StatelessWidget {
+  const TravelDayItem_widget(
+      {super.key,
+        required this.day,
+        required this.text,
+        required this.where});
 
-  final String kun, joy;
+  final String day, text, where;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 108,
-          height: 23,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: AppColors.TextGreen,
-              ),
-              borderRadius: BorderRadius.circular(11)),
+    return Container(
+      width: 108,
+      height: 25,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: AppColors.TextGreen,
+          width: 1,
         ),
-        Positioned(
-          top: 0,
-          left: 5,
-          child: Row(
+        borderRadius: BorderRadius.circular(11),
+        color: Colors.white,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          // SizedBox(width: 0),
+          Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              color: AppColors.TextGreen,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            alignment: Alignment.center,
+            child: SvgPicture.asset(
+              "asset/icons/calendar.svg",
+            ),
+          ),
+          Column(
             children: [
-              Container(
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                    color: AppColors.TextGreen,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: SvgPicture.asset("asset/icons/calendar.svg"),
+              Text(
+                day,
+                style: TextStyle(
+                  color: AppColors.TextGreen,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              Column(
-                children: [
-                  Text(
-                    kun,
-                    style: TextStyle(color: AppColors.TextGreen, fontSize: 12),
-                  ),
-                  Text(
-                    "Kun",
-                    style: TextStyle(color: AppColors.TextGreen, fontSize: 6),
-                  )
-                ],
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(joy,
-                    style: TextStyle(color: AppColors.TextGreen, fontSize: 12)),
+              Text(
+                text,
+                style: TextStyle(
+                  color: AppColors.TextGreen,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 4,
+                ),
               ),
             ],
           ),
-        )
-      ],
+          SizedBox(width: 1),
+          Text(
+            where,
+            style: TextStyle(
+              color: AppColors.TextGreen,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

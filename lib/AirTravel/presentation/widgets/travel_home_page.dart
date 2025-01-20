@@ -1,24 +1,40 @@
-import  'package:flutter/material.dart';
-import 'package:new_project/AirTravel/presentation/widgets/travel_item_page.dart';
-
-class TravelHomePage extends StatelessWidget {
-  const TravelHomePage({super.key});
+import 'package:flutter/material.dart';
+import 'package:new_project/utils/constants.dart';
+class OpenMoreItem extends StatelessWidget {
+  const OpenMoreItem({super.key,required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+    return Container(
+      width: 33,
+      height: 19,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          width: 1,
+          color: AppColors.TextGreen,
+        ),
+        borderRadius: BorderRadius.circular(10),
       ),
-      body: TravelItemPage(
-        image: "asset/images/offers/offers_1.jpg",
-        name: "Umra Sayohati",
-        duration: "14 kun",
-        tariflar: "Ekanom",
-        qonish_vaqt: "17Oktyabr",
-        uchish_vaqt: "27Oktyabr",
-        travel_Content: 'Tarkib',
+      child: Container(
+        // color: AppColors.GreenMain,
+        width: 29,
+        height: 15,
+        decoration: BoxDecoration(
+          color: AppColors.TextGreen,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 1, color: Colors.white),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+            fontSize: 10,
+          ),
+        ),
       ),
     );
   }

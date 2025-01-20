@@ -1,178 +1,149 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:new_project/AirTravel/presentation/widgets/travel_content.dart';
+import 'package:new_project/AirTravel/presentation/widgets/travel_home_page.dart';
 import 'package:new_project/utils/constants.dart';
 
-class TravelTariffPage extends StatelessWidget {
-  const TravelTariffPage({
+class TariffsItem extends StatelessWidget {
+  const TariffsItem({
     super.key,
-    required this.discount_money,
-    required this.money,
-    required this.TarifName,
+    required this.tariff,
+    required this.price,
+    required this.oldPrice,
+    required this.text,
+    required this.FirstComposition,
+    required this.SecondComposition,
   });
 
-  final int money, discount_money;
-  final String TarifName;
+  final String tariff,
+      price,
+      oldPrice,
+      text,
+      FirstComposition,
+      SecondComposition;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Positioned(
-          //top: 10,
-          child: Container(
+    return Container(
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
             width: 127,
-            height: 83,
+            height: 90,
             decoration: BoxDecoration(
               color: AppColors.TextGreen,
-              borderRadius: BorderRadius.circular(11),
+              borderRadius: BorderRadius.circular(10),
             ),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "$discount_money",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      price,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "$money",
-                        style: TextStyle(color: Colors.white, fontSize: 9),
-                      )
-                    ],
-                  ),
-                  Text(
-                    "Afzalliklari",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 7,
-                      fontWeight: FontWeight.w700,
                     ),
+                    Text(
+                      oldPrice,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 9,
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+
+                Text(
+                  text,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 7,
+                    fontWeight: FontWeight.w700,
                   ),
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        width: 107,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Color(0xFF069C57),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 2,
-                        left: 2,
+                ),
+                SizedBox(height: 2),
+                TravelComposition(text: FirstComposition),
+                SizedBox(height: 2),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TravelComposition(
+                      text: SecondComposition,
+                    ),
+                    OpenMoreItem(text: "6 +"),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 2,
+                      color: Colors.white,
+                    ),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: -7,
+                      child: Center(
                         child: Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                            color: AppColors.TextGreen,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SvgPicture.asset("asset/icons/tick.svg"),
-                              SizedBox(width: 2,),
-                              Text("Transport ximati",
-                              style: TextStyle(color:
-                                AppColors.TextGreen,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold
-                              ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: -20,
-                        child: Container(
-                          width: 62,
-                          height: 17,
+                          width: 16,
+                          height: 16,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: AppColors.TextGreen,
+                              color: AppColors.BorderColor,
                             ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          child: Row(
-                            children: [
-                              Container(
-                                  width: 12,
-                                  height: 12,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.TextGreen,
-                                      borderRadius: BorderRadius.circular(6)),
-                                  child:
-                                  SvgPicture.asset("asset/icons/tick.svg")
-                              ),
-                              Text(
-                                "Nonushta",
-                                style: TextStyle(
-                                    color: AppColors.TextGreen, fontSize: 10),
-                              ),
-                            ],
-                          ),
+                          child: SvgPicture.asset(
+                              "asset/icons/down-arrow.svg"),
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-        ),
-        Positioned(
-          top: -10,
-          left: 30,
-          right: 30,
-          child: Container(
-            width: 65,
-            height: 19,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColors.TextGreen),
-            ),
-            child: Align(
+          Positioned(
+            top: -13,
+            right: 29,
+            child: Container(
+              width: 65,
+              height: 19,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: AppColors.BorderColor,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
               alignment: Alignment.center,
               child: Text(
-                TarifName,
-                style: TextStyle(color: AppColors.TextGreen),
+                tariff,
+                style: TextStyle(
+                  color: AppColors.TextGreen,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          bottom: -10,
-          left: 55,
-          right: 55,
-          child: Container(
-            width: 16,
-            height: 16,
-            decoration: BoxDecoration(
-              color: Color(0xFF069C57),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: SvgPicture.asset("asset/icons/down-arrow.svg"),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
