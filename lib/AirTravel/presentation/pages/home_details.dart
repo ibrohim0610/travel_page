@@ -27,14 +27,14 @@ class HomeDetails extends StatelessWidget {
             onTap: () {
               context.go('/home');
             },
-            child: SvgPicture.asset("TravelAssets/icons/back-arrow.svg"),
+            child: SvgPicture.asset("asset/icons/back-arrow.svg"),
           ),
         ),
       ),
       body: ListView(
         children: [
           Image(
-            image: AssetImage("TravelAssets/images/places/makka.png"),
+            image: AssetImage("asset/images/places/makka.png"),
           ),
           SizedBox(height: 16),
           Padding(
