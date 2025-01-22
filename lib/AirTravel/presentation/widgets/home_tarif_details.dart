@@ -73,19 +73,19 @@ class TariffDetailItem extends StatelessWidget {
                 ],
               ),
               TariffsTextItem(
-                svg: "TravelAssets/icons/plane.svg",
+                svg: "asset/icons/plane.svg",
                 text: plane,
               ),
               TariffsTextItem(
-                svg: "TravelAssets/icons/bus.svg",
+                svg: "asset/icons/bus.svg",
                 text: bus,
               ),
               TariffsTextItem(
-                svg: "TravelAssets/icons/medical.svg",
+                svg: "asset/icons/medical.svg",
                 text: medical,
               ),
               TariffsTextItem(
-                svg: "TravelAssets/icons/people.svg",
+                svg: "asset/icons/people.svg",
                 text: leaders,
               ),
               Text(
